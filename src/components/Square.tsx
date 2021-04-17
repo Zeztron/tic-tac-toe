@@ -6,7 +6,11 @@ interface SquareProps {
 }
 
 const Square: React.FC<SquareProps> = ({ value, onClick }) => {
-  return <button data-test='square-button'>{value}</button>;
+  return (
+    <button data-test='square-button' onClick={onClick}>
+      {value}
+    </button>
+  );
 };
 
 export default Square;
