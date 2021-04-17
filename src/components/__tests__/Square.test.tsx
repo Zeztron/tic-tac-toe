@@ -4,7 +4,7 @@ import { findByTestAttr } from '../../test/testUtils';
 import Square from '../Square';
 
 const defaultProps = {
-  value: 'X',
+  value: '',
   onClick: jest.fn(),
 };
 
@@ -18,4 +18,9 @@ const wrapper = setup();
 it('renders button element without errors', () => {
   const component = findByTestAttr(wrapper, 'square-button');
   expect(component.length).toBe(1);
+});
+
+it('displays empty text on render', () => {
+  const component = findByTestAttr(wrapper, 'square-button');
+  expect(component.text()).toBe('');
 });
