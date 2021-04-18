@@ -1,7 +1,17 @@
 import React from 'react';
 
-const Reset = () => {
-  return <div data-test='reset-component'>Reset</div>;
+interface ResetProps {
+  reset: () => void;
+}
+
+const Reset: React.FC<ResetProps> = ({ reset }) => {
+  return (
+    <div>
+      <button data-test='reset-component' type='button' onClick={reset}>
+        Reset
+      </button>
+    </div>
+  );
 };
 
 export default Reset;
