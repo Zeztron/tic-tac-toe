@@ -9,7 +9,7 @@ type SquareValue = 'X' | 'O' | null;
  *
  * https://reactjs.org/tutorial/tutorial.html
  * @param squares {SquareValue[]}
- * @returns {SquareValue}
+ * @returns {SquareValue} | 'Tie'
  */
 export function calculateWinner(squares: SquareValue[]) {
   const lines = [
@@ -22,11 +22,16 @@ export function calculateWinner(squares: SquareValue[]) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+
+  let winner = lines.reduce((square: string | null, [a, b, c]) => {
+    if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
+      square = squares[a];
     }
-  }
-  return null;
+
+    return square;
+  }, null);
+
+  if (!winner && squares.every((square) => square)) winner = 'Tie';
+
+  return winner;
 }
