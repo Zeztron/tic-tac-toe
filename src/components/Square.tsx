@@ -7,8 +7,10 @@ interface SquareProps {
 }
 
 const Square: React.FC<SquareProps> = ({ value, onClick }) => {
+  const style = value ? `squares ${value}` : 'squares';
+
   return (
-    <button data-test='square-button' onClick={onClick}>
+    <button data-test='square-button' onClick={onClick} className={style}>
       {value}
     </button>
   );

@@ -9,7 +9,7 @@ interface BoardProps {
 
 const Board: React.FC<BoardProps> = ({ squares, onClick }) => {
   return (
-    <div data-test='board-component'>
+    <div data-test='board-component' className='board'>
       {squares.map((square, i) => (
         <Square key={i} value={square} onClick={() => onClick(i)} />
       ))}
