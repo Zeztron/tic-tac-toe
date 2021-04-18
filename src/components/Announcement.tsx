@@ -6,7 +6,7 @@ interface AnnouncementProps {
 
 const Announcement: React.FC<AnnouncementProps> = ({ winner }) => {
   return (
-    <div data-test='announcement-component'>
+    <div data-test='announcement-component' className='message'>
       {winner === 'Tie' ? (
         <div>
           <h2>It's a Tie!</h2>

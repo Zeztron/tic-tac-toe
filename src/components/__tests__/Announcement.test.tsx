@@ -4,7 +4,7 @@ import Announcement from '../Announcement';
 import { findByTestAttr } from '../../test/testUtils';
 
 describe('Announcement Component', () => {
-  const wrapper = shallow(<Announcement winner={'X'} />);
+  const wrapper: ShallowWrapper = shallow(<Announcement winner={'X'} />);
 
   it('renders announcement component without errors', () => {
     const announcementComponent = findByTestAttr(
