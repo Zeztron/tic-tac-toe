@@ -52,7 +52,14 @@ const Game = () => {
     setWinner('');
   };
 
-  const onRewind = () => {};
+  const onRewind = () => {
+    if (stepNumber === 0) return;
+    const previousMove = history.slice(0, stepNumber);
+    setHistory([...previousMove]);
+    setStepNumber(stepNumber - 1);
+    setIsXNext(!isXNext);
+    if (winner) setWinner('');
+  };
 
   return (
     <div data-test='game-component'>
