@@ -23,7 +23,7 @@ export function calculateWinner(squares: SquareValue[]) {
     [2, 4, 6],
   ];
 
-  let winner = lines.reduce((square: string | null, [a, b, c]) => {
+  let winner = lines.reduce((square: SquareValue | 'Tie', [a, b, c]) => {
     if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
       square = squares[a];
     }
