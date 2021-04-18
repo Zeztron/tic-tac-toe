@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { shallow, ShallowWrapper, mount } from 'enzyme';
 import { findByTestAttr } from '../../test/testUtils';
 import Square from '../Square';
 
@@ -7,6 +7,7 @@ const setupProps = {
   value: null,
   onClick: jest.fn(),
   index: 1,
+  disabled: false,
 };
 
 const setup = () => {
@@ -31,5 +32,18 @@ describe('Square Component', () => {
     const component = findByTestAttr(wrapper, 'square-button-1');
     component.simulate('click');
     expect(setupProps.onClick).toHaveBeenCalled();
+  });
+
+  it('Only allows to click the same button once', () => {
+    const disabledProps = {
+      value: null,
+      onClick: jest.fn(),
+      index: 1,
+      disabled: true,
+    };
+
+    const buttonComponent = mount(<Square {...disabledProps} />);
+    buttonComponent.simulate('click');
+    expect(disabledProps.onClick).not.toHaveBeenCalled();
   });
 });

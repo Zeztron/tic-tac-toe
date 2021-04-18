@@ -4,7 +4,7 @@ import Board from '../Board';
 import Square from '../Square';
 
 const setupProps = {
-  squares: Array(9).fill(null),
+  squares: Array(9).fill({ value: null, disabled: false }),
   onClick: jest.fn(),
 };
 

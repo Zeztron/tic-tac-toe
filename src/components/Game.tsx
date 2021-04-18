@@ -3,12 +3,16 @@ import Board from './Board';
 import Message from './Message';
 
 const Game = () => {
-  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [squares, setSquares] = useState(
+    Array(9).fill({ value: null, disabled: false })
+  );
   const [isXNext, setIsXNext] = useState(true);
 
   const handleClick = (i: number) => {
     const moves = [...squares];
-    moves[i] = isXNext ? 'X' : 'O';
+    moves[i] = isXNext
+      ? { value: 'X', disabled: true }
+      : { value: 'O', disabled: true };
     setSquares(moves);
     setIsXNext(!isXNext);
   };
