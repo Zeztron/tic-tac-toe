@@ -59,4 +59,18 @@ describe('Game Component', () => {
     );
     expect(announcementWrapper.text()).toBe("It's a Tie!");
   });
+
+  it('disables all Square buttons if theres a winner or a tie', () => {
+    const squares = Array.from(Array(9), (x, index) =>
+      findByTestAttr(wrapper, `square-button-${index}`)
+    );
+
+    [0, 1, 4, 5, 8].forEach((i) => squares[i].simulate('click'));
+
+    Array.from(Array(9), (x, index) =>
+      findByTestAttr(wrapper, `square-button-${index}`)
+    ).forEach((square) => {
+      expect(square.prop('disabled')).toBe(true);
+    });
+  });
 });
