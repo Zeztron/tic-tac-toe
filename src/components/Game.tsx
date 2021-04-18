@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Game = () => {
-  return <div></div>;
+  return <div data-test='game-component'></div>;
 };
 
 export default Game;
