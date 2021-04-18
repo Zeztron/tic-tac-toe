@@ -77,4 +77,22 @@ describe('Game Component', () => {
       expect(square.prop('disabled')).toBe(true);
     });
   });
+
+  it('resets the game if Reset button is pressed', () => {
+    const squares = Array.from(Array(9), (x, index) =>
+      findByTestAttr(wrapper, `square-button-${index}`)
+    );
+
+    [0, 1, 4, 5, 8].forEach((i) => squares[i].simulate('click'));
+
+    const resetButton = findByTestAttr(wrapper, 'reset-component');
+    resetButton.simulate('click');
+
+    Array.from(Array(9), (x, index) =>
+      findByTestAttr(wrapper, `square-button-${index}`)
+    ).forEach((square) => {
+      expect(square.text()).toEqual('');
+      expect(square.prop('disabled')).toBe(false);
+    });
+  });
 });
