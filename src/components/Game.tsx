@@ -38,7 +38,11 @@ const Game = () => {
     }
   }, [winner]);
 
-  const onReset = () => {};
+  const onReset = () => {
+    setSquares(Array(9).fill({ value: null, disabled: false }));
+    setIsXNext(true);
+    setWinner('');
+  };
 
   return (
     <div data-test='game-component'>
