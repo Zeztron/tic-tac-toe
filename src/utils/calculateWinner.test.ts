@@ -6,4 +6,10 @@ describe('calculateWinner helper function', () => {
       calculateWinner([null, null, null, null, null, null, null, null, null])
     ).toEqual(null);
   });
+
+  it('returns X if the winner is X', () => {
+    expect(
+      calculateWinner(['X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'O'])
+    ).toEqual('X');
+  });
 });
