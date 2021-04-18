@@ -24,4 +24,13 @@ describe('Message Component', () => {
     const messageComponent = findByTestAttr(wrapper, 'message-component');
     expect(messageComponent.text()).toBe("It's X's Turn");
   });
+
+  it('Displays that its O turn', () => {
+    const wrapper: ShallowWrapper = setup({
+      hasStarted: true,
+      isXNext: false,
+    });
+    const messageComponent = findByTestAttr(wrapper, 'message-component');
+    expect(messageComponent.text()).toBe("It's O's Turn");
+  });
 });
