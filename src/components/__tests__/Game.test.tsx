@@ -31,4 +31,10 @@ describe('Game Component', () => {
     expect(x.text()).toBe('X');
     expect(o.text()).toBe('O');
   });
+
+  it('only allows you to click on a square once', () => {
+    const square = findByTestAttr(wrapper, 'square-button-0');
+    square.simulate('click');
+    expect(square.prop('disabled')).toBeTruthy();
+  });
 });
