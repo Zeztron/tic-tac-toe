@@ -1,4 +1,4 @@
-import { shallow, ShallowWrapper, mount } from 'enzyme';
+import { shallow, ShallowWrapper } from 'enzyme';
 import { findByTestAttr } from '../../test/testUtils';
 import Board from '../Board';
 import Square from '../Square';
