@@ -31,4 +31,18 @@ describe('Game Component', () => {
     expect(x.text()).toBe('X');
     expect(o.text()).toBe('O');
   });
+
+  it('Displays the winner if X or O won', () => {
+    const squares = Array.from(Array(9), (x, index) =>
+      findByTestAttr(wrapper, `square-button-${index}`)
+    );
+
+    [0, 1, 4, 5, 8].forEach((i) => squares[i].simulate('click'));
+
+    const announcementWrapper = findByTestAttr(
+      wrapper,
+      'announcement-component'
+    );
+    expect(announcementWrapper.text()).toBe('X Wins!');
+  });
 });
