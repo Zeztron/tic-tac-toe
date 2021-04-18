@@ -2,7 +2,6 @@ import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import Game from '../Game';
 import { findByTestAttr } from '../../test/testUtils';
-import Message from '../Message';
 
 const setup = () => mount(<Game />);
 
@@ -25,6 +24,10 @@ describe('Game Component', () => {
 
   it('renders an instance of Reset component successfully', () => {
     expect(wrapper.find('Reset').length).toEqual(1);
+  });
+
+  it('renders an instance of Rewind componetn successfully', () => {
+    expect(wrapper.find('Rewind').length).toEqual(1);
   });
 
   it('displays X and O in their respective squares', () => {
