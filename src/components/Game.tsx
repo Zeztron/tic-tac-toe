@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Board from './Board';
 import Message from './Message';
 import { calculateWinner } from '../utils/calculateWinner';
@@ -17,9 +17,24 @@ const Game = () => {
       : { value: 'O', disabled: true };
     setSquares(moves);
     setIsXNext(!isXNext);
-    const winner = calculateWinner(moves);
-    if (winner) setWinner(winner);
   };
+
+  useEffect(() => {
+    const winner = calculateWinner(squares);
+    if (winner) {
+      setWinner(winner);
+    }
+  }, [squares]);
+
+  useEffect(() => {
+    if (winner) {
+      const updatedSquares = squares.map((square, i) => ({
+        ...square,
+        disabled: true,
+      }));
+      setSquares(updatedSquares);
+    }
+  }, [winner]);
 
   return (
     <div data-test='game-component'>
