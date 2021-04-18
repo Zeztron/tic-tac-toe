@@ -18,4 +18,10 @@ describe('calculateWinner helper function', () => {
       calculateWinner(['O', null, 'X', 'X', 'O', null, 'O', 'X', 'O'])
     ).toEqual('O');
   });
+
+  it('returns Tie if the game is tied', () => {
+    expect(
+      calculateWinner(['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O'])
+    ).toEqual('Tie');
+  });
 });
