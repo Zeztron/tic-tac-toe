@@ -11,7 +11,7 @@ const Board: React.FC<BoardProps> = ({ squares, onClick }) => {
   return (
     <div data-test='board-component' className='board'>
       {squares.map((square, i) => (
-        <Square key={i} value={square} onClick={() => onClick(i)} />
+        <Square key={i} index={i} value={square} onClick={() => onClick(i)} />
       ))}
     </div>
   );
