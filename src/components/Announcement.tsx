@@ -13,7 +13,7 @@ const Announcement: React.FC<AnnouncementProps> = ({ winner }) => {
         </div>
       ) : (
         <div>
-          <h2>{winner} Wins!</h2>
+          <h2>{winner} Wins! 🥳</h2>
         </div>
       )}
     </div>

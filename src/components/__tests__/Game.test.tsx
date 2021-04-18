@@ -50,7 +50,7 @@ describe('Game Component', () => {
       wrapper,
       'announcement-component'
     );
-    expect(announcementWrapper.text()).toBe('X Wins!');
+    expect(announcementWrapper.text()).toBe('X Wins! 🥳');
   });
 
   it('displays a message "Its a Tie!" if theres a tie', () => {
