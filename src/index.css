@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -6,6 +8,7 @@
 
 body {
   background-color: #1f2937;
+  font-family: 'Roboto', sans-serif;
   color: white;
   display: flex;
   justify-content: center;
@@ -51,4 +54,15 @@ body {
   color: #fff;
   background: #34d399;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.message {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.message h2 {
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
