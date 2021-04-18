@@ -18,4 +18,10 @@ describe('Message Component', () => {
     const messageComponent = findByTestAttr(wrapper, 'message-component');
     expect(messageComponent.text()).toBe('Click To Start Game');
   });
+
+  it('Displays that its X turn', () => {
+    const wrapper: ShallowWrapper = setup({ hasStarted: true, isXNext: true });
+    const messageComponent = findByTestAttr(wrapper, 'message-component');
+    expect(messageComponent.text()).toBe("It's X's Turn");
+  });
 });
