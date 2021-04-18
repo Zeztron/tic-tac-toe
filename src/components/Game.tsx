@@ -6,7 +6,12 @@ const Game = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
 
-  const handleClick = () => {};
+  const handleClick = (i: number) => {
+    const moves = [...squares];
+    moves[i] = isXNext ? 'X' : 'O';
+    setSquares(moves);
+    setIsXNext(!isXNext);
+  };
 
   return (
     <div data-test='game-component'>
