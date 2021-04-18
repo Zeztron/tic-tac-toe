@@ -6,7 +6,7 @@ import { findByTestAttr } from '../../test/testUtils';
 describe('Rewind Component', () => {
   const rewind = jest.fn();
   let wrapper: ShallowWrapper;
-  beforeEach(() => (wrapper = shallow(<Rewind />)));
+  beforeEach(() => (wrapper = shallow(<Rewind rewind={rewind} />)));
 
   it('renders Rewind component without errors', () => {
     const component = findByTestAttr(wrapper, 'rewind-component');
