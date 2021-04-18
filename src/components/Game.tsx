@@ -30,9 +30,15 @@ const Game = () => {
       />
       {!!winner && (
         <div data-test='announcement-component'>
-          <div>
-            <h2>{winner} Wins!</h2>
-          </div>
+          {winner === 'Tie' ? (
+            <div>
+              <h2>It's a Tie!</h2>
+            </div>
+          ) : (
+            <div>
+              <h2>{winner} Wins!</h2>
+            </div>
+          )}
         </div>
       )}
     </div>
