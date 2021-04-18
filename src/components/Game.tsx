@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Board from './Board';
 import Message from './Message';
 import Reset from './Reset';
+import Rewind from './Rewind';
 import Announcement from './Announcement';
 import { calculateWinner } from '../utils/calculateWinner';
 
@@ -44,6 +45,8 @@ const Game = () => {
     setWinner('');
   };
 
+  const onRewind = () => {};
+
   return (
     <div data-test='game-component'>
       <Board squares={squares} onClick={handleClick} />
@@ -53,7 +56,10 @@ const Game = () => {
           isXNext={isXNext}
         />
       )}
-      <Reset reset={onReset} />
+      <div>
+        <Rewind rewind={onRewind} />
+        <Reset reset={onReset} />
+      </div>
       {!!winner && <Announcement winner={winner} />}
     </div>
   );
