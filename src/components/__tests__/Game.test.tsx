@@ -98,4 +98,12 @@ describe('Game Component', () => {
       expect(square.prop('disabled')).toBe(false);
     });
   });
+
+  it('rewinds if the Rewind button is pressed', () => {
+    const square = findByTestAttr(wrapper, 'square-button-0');
+    square.simulate('click');
+    const rewindButton = findByTestAttr(wrapper, 'rewind-component');
+    rewindButton.simulate('click');
+    expect(square.text()).toBe('');
+  });
 });
