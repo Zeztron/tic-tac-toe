@@ -66,3 +66,45 @@ body {
   font-weight: bold;
   letter-spacing: 0.5px;
 }
+
+.reset-button {
+  background: #34d399;
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.reset-button:hover {
+  background: #00af6f;
+}
+
+.rewind-button {
+  background: #f87171;
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.rewind-button:hover {
+  background: #ee4e4e;
+}
+
+.control-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}

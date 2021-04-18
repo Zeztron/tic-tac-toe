@@ -7,8 +7,13 @@ interface ResetProps {
 const Reset: React.FC<ResetProps> = ({ reset }) => {
   return (
     <div>
-      <button data-test='reset-component' type='button' onClick={reset}>
-        Reset
+      <button
+        data-test='reset-component'
+        type='button'
+        onClick={reset}
+        className='reset-button'
+      >
+        <i className='fas fa-fast-backward'></i> Reset
       </button>
     </div>
   );

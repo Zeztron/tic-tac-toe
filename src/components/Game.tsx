@@ -70,11 +70,11 @@ const Game = () => {
           isXNext={isXNext}
         />
       )}
-      <div>
+      {!!winner && <Announcement winner={winner} />}
+      <div className='control-buttons'>
         <Rewind rewind={onRewind} />
         <Reset reset={onReset} />
       </div>
-      {!!winner && <Announcement winner={winner} />}
     </div>
   );
 };
