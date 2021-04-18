@@ -23,7 +23,7 @@ describe('Game Component', () => {
     expect(wrapper.find('Message').length).toEqual(1);
   });
 
-  it('Displays X and O in their respective squares', () => {
+  it('displays X and O in their respective squares', () => {
     const x = findByTestAttr(wrapper, 'square-button-0');
     const o = findByTestAttr(wrapper, 'square-button-1');
     x.simulate('click');
@@ -32,7 +32,7 @@ describe('Game Component', () => {
     expect(o.text()).toBe('O');
   });
 
-  it('Displays the winner if X or O won', () => {
+  it('displays the winner if X or O won', () => {
     const squares = Array.from(Array(9), (x, index) =>
       findByTestAttr(wrapper, `square-button-${index}`)
     );
@@ -44,5 +44,19 @@ describe('Game Component', () => {
       'announcement-component'
     );
     expect(announcementWrapper.text()).toBe('X Wins!');
+  });
+
+  it('displays a message "Its a Tie!" if theres a tie', () => {
+    const squares = Array.from(Array(9), (x, index) =>
+      findByTestAttr(wrapper, `square-button-${index}`)
+    );
+
+    [0, 1, 2, 4, 3, 6, 5, 8, 7].forEach((i) => squares[i].simulate('click'));
+
+    const announcementWrapper = findByTestAttr(
+      wrapper,
+      'announcement-component'
+    );
+    expect(announcementWrapper.text()).toBe("It's a Tie!");
   });
 });
