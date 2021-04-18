@@ -1,8 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, ShallowWrapper } from 'enzyme';
 import App from '../App';
+import Game from '../Game';
 
-it('renders non-empty component without crashing', () => {
-  const wrapper = shallow(<App />);
-  expect(wrapper.exists()).toBe(true);
+const setup = () => shallow(<App />);
+
+describe('<App />', () => {
+  let wrapper: ShallowWrapper;
+  beforeEach(() => (wrapper = setup()));
+
+  it('successfully renders Game component', () => {
+    expect(wrapper.containsMatchingElement(<Game />)).toEqual(true);
+  });
 });
