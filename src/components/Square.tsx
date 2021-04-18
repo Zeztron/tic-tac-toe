@@ -1,7 +1,8 @@
 import React from 'react';
 
+type SquareValue = 'X' | 'O' | null;
 interface SquareProps {
-  value: string;
+  value: SquareValue;
   onClick: () => void;
 }
 

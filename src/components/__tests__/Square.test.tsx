@@ -1,10 +1,10 @@
-import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
+import { shallow, ShallowWrapper } from 'enzyme';
 import { findByTestAttr } from '../../test/testUtils';
 import Square from '../Square';
 
 const setupProps = {
-  value: '',
+  value: null,
   onClick: jest.fn(),
 };
 
@@ -14,7 +14,6 @@ const setup = () => {
 
 describe('Square Component', () => {
   let wrapper: ShallowWrapper;
-  const onClick = jest.fn();
   beforeEach(() => (wrapper = setup()));
 
   it('renders button element without errors', () => {
