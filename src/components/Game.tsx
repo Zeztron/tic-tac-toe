@@ -7,40 +7,47 @@ import Announcement from './Announcement';
 import { calculateWinner } from '../utils/calculateWinner';
 
 const Game = () => {
-  const [squares, setSquares] = useState(
-    Array(9).fill({ value: null, disabled: false })
-  );
+  const [history, setHistory] = useState([
+    Array(9).fill({ value: null, disabled: false }),
+  ]);
   const [isXNext, setIsXNext] = useState(true);
   const [winner, setWinner] = useState('');
+  const [stepNumber, setStepNumber] = useState(0);
 
   const handleClick = (i: number) => {
-    const moves = [...squares];
-    moves[i] = isXNext
+    const historyPoint = history.slice(0, stepNumber + 1);
+    const current = historyPoint[stepNumber];
+    const squares = [...current];
+    squares[i] = isXNext
       ? { value: 'X', disabled: true }
       : { value: 'O', disabled: true };
-    setSquares(moves);
     setIsXNext(!isXNext);
+    setStepNumber(historyPoint.length);
+    setHistory([...historyPoint, squares]);
   };
 
   useEffect(() => {
-    const winner = calculateWinner(squares);
+    const winner = calculateWinner(history[stepNumber]);
     if (winner) {
       setWinner(winner);
     }
-  }, [squares]);
+  }, [history, stepNumber]);
 
   useEffect(() => {
     if (winner) {
-      const updatedSquares = squares.map((square, i) => ({
+      const updatedHistory = history[stepNumber].map((square, i) => ({
         ...square,
         disabled: true,
       }));
-      setSquares(updatedSquares);
+      const historyPoint = history.slice(0, stepNumber);
+      historyPoint.push(updatedHistory);
+      setHistory([...historyPoint]);
     }
   }, [winner]);
 
   const onReset = () => {
-    setSquares(Array(9).fill({ value: null, disabled: false }));
+    setHistory([Array(9).fill({ value: null, disabled: false })]);
+    setStepNumber(0);
     setIsXNext(true);
     setWinner('');
   };
@@ -49,10 +56,10 @@ const Game = () => {
 
   return (
     <div data-test='game-component'>
-      <Board squares={squares} onClick={handleClick} />
+      <Board squares={history[stepNumber]} onClick={handleClick} />
       {!winner && (
         <Message
-          hasStarted={squares.some((square) => square)}
+          hasStarted={history[stepNumber].some((square) => square)}
           isXNext={isXNext}
         />
       )}
