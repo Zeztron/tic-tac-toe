@@ -23,6 +23,10 @@ describe('Game Component', () => {
     expect(wrapper.find('Message').length).toEqual(1);
   });
 
+  it('renders an instance of Reset component successfully', () => {
+    expect(wrapper.find('Reset').length).toEqual(1);
+  });
+
   it('displays X and O in their respective squares', () => {
     const x = findByTestAttr(wrapper, 'square-button-0');
     const o = findByTestAttr(wrapper, 'square-button-1');
