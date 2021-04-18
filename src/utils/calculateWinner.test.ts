@@ -9,7 +9,13 @@ describe('calculateWinner helper function', () => {
 
   it('returns X if the winner is X', () => {
     expect(
-      calculateWinner(['X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'O'])
+      calculateWinner(['X', 'X', 'X', null, 'O', 'X', 'O', null, 'O'])
     ).toEqual('X');
+  });
+
+  it('returns O if the winner is O', () => {
+    expect(
+      calculateWinner(['O', null, 'X', 'X', 'O', null, 'O', 'X', 'O'])
+    ).toEqual('O');
   });
 });
