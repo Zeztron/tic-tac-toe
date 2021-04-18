@@ -8,7 +8,7 @@ interface MessageProps {
 const Message: React.FC<MessageProps> = ({ hasStarted, isXNext }) => {
   return (
     <div data-test='message-component'>
-      {!hasStarted ? 'Click To Start Game' : ''}
+      {hasStarted ? (isXNext ? "It's X's Turn" : '') : 'Click To Start Game'}
     </div>
   );
 };
