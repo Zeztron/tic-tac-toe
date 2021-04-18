@@ -3,25 +3,65 @@ import { calculateWinner } from './calculateWinner';
 describe('calculateWinner helper function', () => {
   it('returns null if there is no winner', () => {
     expect(
-      calculateWinner([null, null, null, null, null, null, null, null, null])
+      calculateWinner([
+        { value: null, disabled: false },
+        { value: null, disabled: false },
+        { value: null, disabled: false },
+        { value: null, disabled: false },
+        { value: null, disabled: false },
+        { value: null, disabled: false },
+        { value: null, disabled: false },
+        { value: null, disabled: false },
+        { value: null, disabled: false },
+      ])
     ).toEqual(null);
   });
 
   it('returns X if the winner is X', () => {
     expect(
-      calculateWinner(['X', 'X', 'X', null, 'O', 'X', 'O', null, 'O'])
+      calculateWinner([
+        { value: 'X', disabled: true },
+        { value: 'X', disabled: true },
+        { value: 'X', disabled: true },
+        { value: null, disabled: false },
+        { value: '0', disabled: true },
+        { value: 'X', disabled: true },
+        { value: '0', disabled: true },
+        { value: null, disabled: false },
+        { value: '0', disabled: true },
+      ])
     ).toEqual('X');
   });
 
   it('returns O if the winner is O', () => {
     expect(
-      calculateWinner(['O', null, 'X', 'X', 'O', null, 'O', 'X', 'O'])
+      calculateWinner([
+        { value: 'O', disabled: true },
+        { value: null, disabled: false },
+        { value: 'X', disabled: true },
+        { value: 'X', disabled: true },
+        { value: 'O', disabled: true },
+        { value: null, disabled: false },
+        { value: 'O', disabled: true },
+        { value: 'X', disabled: true },
+        { value: 'O', disabled: true },
+      ])
     ).toEqual('O');
   });
 
   it('returns Tie if the game is tied', () => {
     expect(
-      calculateWinner(['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O'])
+      calculateWinner([
+        { value: 'X', disabled: true },
+        { value: 'O', disabled: true },
+        { value: 'X', disabled: true },
+        { value: 'X', disabled: true },
+        { value: 'X', disabled: true },
+        { value: 'O', disabled: true },
+        { value: 'O', disabled: true },
+        { value: 'X', disabled: true },
+        { value: 'O', disabled: true },
+      ])
     ).toEqual('Tie');
   });
 });

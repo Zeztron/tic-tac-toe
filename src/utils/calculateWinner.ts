@@ -11,7 +11,8 @@ type SquareValue = 'X' | 'O' | null;
  * @param squares {SquareValue[]}
  * @returns {SquareValue} | 'Tie'
  */
-export function calculateWinner(squares: SquareValue[]) {
+export function calculateWinner(squares: any[]) {
+  console.log(squares);
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -24,14 +25,18 @@ export function calculateWinner(squares: SquareValue[]) {
   ];
 
   let winner = lines.reduce((square: SquareValue | 'Tie', [a, b, c]) => {
-    if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
-      square = squares[a];
+    if (
+      squares[a].value &&
+      squares[a].value === squares[b].value &&
+      squares[b].value === squares[c].value
+    ) {
+      square = squares[a].value;
     }
 
     return square;
   }, null);
 
-  if (!winner && squares.every((square) => square)) winner = 'Tie';
+  if (!winner && squares.every((square) => square.value)) winner = 'Tie';
 
   return winner;
 }
