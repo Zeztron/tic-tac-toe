@@ -1,79 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer, useCallback } from 'react';
 import Board from './Board';
 import Message from './Message';
 import Reset from './Reset';
 import Rewind from './Rewind';
 import Announcement from './Announcement';
 import { calculateWinner } from '../utils/calculateWinner';
+import { gameState, gameReducer } from '../reducer/gameReducer';
 
 const Game = () => {
-  const [history, setHistory] = useState([
-    Array(9).fill({ value: null, disabled: false }),
-  ]);
-  const [isXNext, setIsXNext] = useState(true);
-  const [winner, setWinner] = useState('');
-  const [stepNumber, setStepNumber] = useState(0);
+  const [{ history, isXNext, winner, stepNumber }, dispatch] = useReducer(
+    gameReducer,
+    gameState
+  );
 
-  const handleClick = (i: number) => {
-    const historyPoint = history.slice(0, stepNumber + 1);
-    const current = historyPoint[stepNumber];
-    const squares = [...current];
-    squares[i] = isXNext
-      ? { value: 'X', disabled: true }
-      : { value: 'O', disabled: true };
-    setIsXNext(!isXNext);
-    setStepNumber(historyPoint.length);
-    setHistory([...historyPoint, squares]);
-  };
+  const handler = useCallback(
+    (i: number) => {
+      dispatch({ type: 'CLICK', index: i });
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     const winner = calculateWinner(history[stepNumber]);
-    if (winner) {
-      setWinner(winner);
-    }
+    dispatch({ type: 'WINNER', winner });
   }, [history, stepNumber]);
 
   useEffect(() => {
-    if (winner) {
-      const updatedHistory = history[stepNumber].map((square, i) => ({
-        ...square,
-        disabled: true,
-      }));
-      const historyPoint = history.slice(0, stepNumber);
-      historyPoint.push(updatedHistory);
-      setHistory([...historyPoint]);
-    }
+    if (winner) dispatch({ type: 'DISABLE' });
   }, [winner]);
 
-  const onReset = () => {
-    setHistory([Array(9).fill({ value: null, disabled: false })]);
-    setStepNumber(0);
-    setIsXNext(true);
-    setWinner('');
-  };
-
-  const onRewind = () => {
-    if (stepNumber === 0) return;
-    const previousMove = history.slice(0, stepNumber);
-    setHistory([...previousMove]);
-    setStepNumber(stepNumber - 1);
-    setIsXNext(!isXNext);
-    if (winner) setWinner('');
-  };
+  const reset = () => dispatch({ type: 'RESET' });
+  const rewind = () => dispatch({ type: 'REWIND' });
 
   return (
     <div data-test='game-component'>
-      <Board squares={history[stepNumber]} onClick={handleClick} />
+      <Board squares={history[stepNumber]} onClick={handler} />
       {!winner && (
         <Message
-          hasStarted={history[stepNumber].some((square) => square)}
+          hasStarted={history[stepNumber].some(
+            (square: { value: 'X' | 'O' | null; disabled: boolean }[]) => square
+          )}
           isXNext={isXNext}
         />
       )}
       {!!winner && <Announcement winner={winner} />}
       <div className='control-buttons'>
-        <Rewind rewind={onRewind} />
-        <Reset reset={onReset} />
+        <Rewind rewind={rewind} />
+        <Reset reset={reset} />
       </div>
     </div>
   );
