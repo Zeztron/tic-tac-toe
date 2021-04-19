@@ -8,7 +8,7 @@ import { calculateWinner } from '../utils/calculateWinner';
 import { gameState, gameReducer } from '../reducer/gameReducer';
 import { ISquare } from '../tic-tac-toe';
 
-const Game = () => {
+const Game: React.FC = () => {
   const [{ history, isXNext, winner, stepNumber }, dispatch] = useReducer(
     gameReducer,
     gameState
