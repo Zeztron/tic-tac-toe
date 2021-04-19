@@ -1,9 +1,9 @@
 import React from 'react';
+import { ISquare } from '../tic-tac-toe';
 import Square from './Square';
 
-type SquareValue = 'X' | 'O' | null;
 interface BoardProps {
-  squares: { value: SquareValue; disabled: boolean }[];
+  squares: ISquare[];
   onClick: (i: number) => void;
 }
 

@@ -24,11 +24,11 @@ describe('calculateWinner helper function', () => {
         { value: 'X', disabled: true },
         { value: 'X', disabled: true },
         { value: null, disabled: false },
-        { value: '0', disabled: true },
+        { value: 'O', disabled: true },
         { value: 'X', disabled: true },
-        { value: '0', disabled: true },
+        { value: 'O', disabled: true },
         { value: null, disabled: false },
-        { value: '0', disabled: true },
+        { value: 'O', disabled: true },
       ])
     ).toEqual('X');
   });
