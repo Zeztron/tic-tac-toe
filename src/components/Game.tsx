@@ -5,7 +5,8 @@ import Reset from './Reset';
 import Rewind from './Rewind';
 import Announcement from './Announcement';
 import { calculateWinner } from '../utils/calculateWinner';
-import { gameState, gameReducer, Square } from '../reducer/gameReducer';
+import { gameState, gameReducer } from '../reducer/gameReducer';
+import { ISquare } from '../tic-tac-toe';
 
 const Game = () => {
   const [{ history, isXNext, winner, stepNumber }, dispatch] = useReducer(
@@ -13,7 +14,7 @@ const Game = () => {
     gameState
   );
 
-  const handler = useCallback(
+  const handleClick = useCallback(
     (index: number) => {
       dispatch({ type: 'CLICK', index });
     },
@@ -34,10 +35,10 @@ const Game = () => {
 
   return (
     <div data-test='game-component'>
-      <Board squares={history[stepNumber]} onClick={handler} />
+      <Board squares={history[stepNumber]} onClick={handleClick} />
       {!winner && (
         <Message
-          hasStarted={history[stepNumber].some((square: Square) => square)}
+          hasStarted={history[stepNumber].some((square: ISquare) => square)}
           isXNext={isXNext}
         />
       )}

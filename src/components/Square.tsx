@@ -1,6 +1,5 @@
 import React from 'react';
-
-type SquareValue = 'X' | 'O' | null;
+import { SquareValue } from '../tic-tac-toe';
 interface SquareProps {
   value: SquareValue;
   onClick: () => void;

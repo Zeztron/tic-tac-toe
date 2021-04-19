@@ -1,6 +1,4 @@
-type SquareValue = 'X' | 'O' | null;
-
-type Squares = { value: SquareValue; disabled: boolean }[];
+import { ISquare, SquareValue } from '../tic-tac-toe';
 
 /**
  * Helper method that calculates winner with all
@@ -10,10 +8,10 @@ type Squares = { value: SquareValue; disabled: boolean }[];
  * a tutorial with tic-tac-toe:
  *
  * https://reactjs.org/tutorial/tutorial.html
- * @param squares {SquareValue[]}
+ * @param squares {ISquare[]}
  * @returns {SquareValue} | 'Tie'
  */
-export function calculateWinner(squares: Squares) {
+export function calculateWinner(squares: ISquare[]) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],

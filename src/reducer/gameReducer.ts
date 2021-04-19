@@ -1,20 +1,7 @@
+import { Action, ISquare } from '../tic-tac-toe';
 import * as actionTypes from './actionTypes';
-
-type SquareValue = 'X' | 'O' | null;
-type Action =
-  | { type: 'CLICK'; index: number }
-  | { type: 'RESET' }
-  | { type: 'REWIND' }
-  | { type: 'DISABLE' }
-  | { type: 'WINNER'; winner: string | null };
-
-export interface Square {
-  value: SquareValue;
-  disabled: boolean;
-}
-
 interface State {
-  history: Square[][];
+  history: ISquare[][];
   isXNext: boolean;
   winner: string | null;
   stepNumber: number;
@@ -55,7 +42,7 @@ export const gameReducer = (state: State, action: Action): State => {
       };
     case actionTypes.DISABLE:
       const updatedHistory = state.history[state.stepNumber].map(
-        (square: Square) => ({
+        (square: ISquare) => ({
           ...square,
           disabled: true,
         })
