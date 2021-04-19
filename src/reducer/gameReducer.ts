@@ -14,6 +14,13 @@ export const gameState: State = {
   stepNumber: 0,
 };
 
+/**
+ * Reducer function that takes in current state and an action
+ * and returns a new state based on the action argument.
+ * @param state - Containing the initial and current state.
+ * @param action - Action object.
+ * @returns {State} - Modified state.
+ */
 export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case actionTypes.CLICK:
