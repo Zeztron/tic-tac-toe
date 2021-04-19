@@ -1,5 +1,7 @@
 type SquareValue = 'X' | 'O' | null;
 
+type Squares = { value: SquareValue; disabled: boolean }[];
+
 /**
  * Helper method that calculates winner with all
  * possible combinations.
@@ -11,7 +13,7 @@ type SquareValue = 'X' | 'O' | null;
  * @param squares {SquareValue[]}
  * @returns {SquareValue} | 'Tie'
  */
-export function calculateWinner(squares: any[]) {
+export function calculateWinner(squares: Squares) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
