@@ -36,11 +36,6 @@ body {
   /* font-weight: 800; */
   cursor: pointer;
   outline: none;
-  transition: all 0.3s ease-in;
-}
-
-.squares:hover {
-  background-color: #9ca3af;
 }
 
 .X {
