@@ -1,5 +1,7 @@
 # Tic-Tac-Toe
 
+![image](https://user-images.githubusercontent.com/41349472/115240216-842a7380-a0ed-11eb-8151-a8483bc76f25.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
